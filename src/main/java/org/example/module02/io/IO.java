@@ -1,6 +1,12 @@
 package org.example.module02.io;
 
-import java.io.*;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class IO {
     public static void main(String[] args) {
