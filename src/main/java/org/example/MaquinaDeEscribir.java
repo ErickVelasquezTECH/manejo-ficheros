@@ -1,20 +1,20 @@
-package org.ies.tierno;
+package org.example;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.List;
 
 public class MaquinaDeEscribir {
 
     public static void main(String[] args) {
+        MaquinaDeEscribir maquinaDeEscribir = new MaquinaDeEscribir();
         String[] cadena = {"Erick", "Luis", "Patricia"};
-        leerContenido("prueba.txt");
+        maquinaDeEscribir.leerContenido("prueba.txt");
     }
 
-    public static void depositarContenido(String[] cadena, String nombreFichero) {
+    public void depositarContenido(String[] cadena, String nombreFichero) {
         Path fichero = Path.of(nombreFichero);
         try {
             if (!Files.exists(fichero)) {
@@ -34,7 +34,7 @@ public class MaquinaDeEscribir {
         }
     }
 
-    public static void leerContenido(String nombreFichero) {
+    public void leerContenido(String nombreFichero) {
         Path fichero = Path.of(nombreFichero);
         try {
             if (Files.exists(fichero)) {
@@ -43,7 +43,7 @@ public class MaquinaDeEscribir {
                                 StandardCharsets.UTF_8)
                         .replace("*", "%n");
 
-                System.out.printf(linea);
+                System.out.printf("%s", linea);
             } else {
                 System.out.print("El fichero no existe");
             }
