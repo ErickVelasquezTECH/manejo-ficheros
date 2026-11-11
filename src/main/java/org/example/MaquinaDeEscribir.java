@@ -17,15 +17,13 @@ public class MaquinaDeEscribir {
     public void depositarContenido(String[] cadena, String nombreFichero) {
         Path fichero = Path.of(nombreFichero);
         try {
-            if (!Files.exists(fichero)) {
-                Files.createFile(fichero);
-            }
-
             for (String palabra : cadena) {
+                String contenido = String.join("*", cadena);
                 Files.writeString(
                         fichero,
-                        palabra + "*",
+                        contenido,
                         StandardCharsets.UTF_8,
+                        StandardOpenOption.CREATE,
                         StandardOpenOption.APPEND
                 );
             }
@@ -43,7 +41,7 @@ public class MaquinaDeEscribir {
                                 StandardCharsets.UTF_8)
                         .replace("*", "%n");
 
-                System.out.printf("%s", linea);
+                System.out.printf(linea);
             } else {
                 System.out.print("El fichero no existe");
             }
